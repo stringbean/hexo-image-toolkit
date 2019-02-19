@@ -1,0 +1,28 @@
+{
+  "name": "@string-bean/hexo-image-toolkit",
+  "version": "0.1.0",
+  "description": "Hexo plugin for managing images",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stringbean/hexo-image-toolkit.git"
+  },
+  "keywords": [
+    "hexo",
+    "hexo-image-optimization",
+    "sharp"
+  ],
+  "author": "Michael Stringer",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/stringbean/hexo-image-toolkit/issues"
+  },
+  "homepage": "https://github.com/stringbean/hexo-image-toolkit#readme",
+  "dependencies": {
+    "hexo-fs": "^1.0.2",
+    "sharp": "^0.21.3"
+  }
+}
