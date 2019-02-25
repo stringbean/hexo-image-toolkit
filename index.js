@@ -1,3 +1,5 @@
+/* global hexo */
+
 const sharp = require('sharp');
 const path = require('path');
 const fs = require('hexo-fs');
@@ -64,6 +66,6 @@ hexo.extend.tag.register('post_img', function (args) {
             hexo.log.info('Generated images for: %s', chalk.magenta(imgAsset.path.replace(/^\//, '')));
         })
         .catch((err) => {
-            console.log(`Failed to generate images: ${err}`);
+            hexo.log.error('Failed to generate images: %s', err);
         });
 }, {async: true});
