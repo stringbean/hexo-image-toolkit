@@ -1,6 +1,7 @@
 const sharp = require('sharp');
 const path = require('path');
 const fs = require('hexo-fs');
+const chalk = require('chalk');
 
 function generateMarkup(config, webp, fallback) {
     let alt = '';
@@ -33,7 +34,6 @@ function generateMarkup(config, webp, fallback) {
 `;
 }
 
-
 hexo.extend.tag.register('post_img', function (args) {
     const PostAsset = hexo.model('PostAsset');
 
@@ -45,6 +45,7 @@ hexo.extend.tag.register('post_img', function (args) {
 
     // load the image
     const imgAsset = PostAsset.findOne({post: this._id, slug: image});
+    hexo.log.debug('Generating images for: %s', chalk.magenta(imgAsset.path.replace(/^\//, '')));
 
     const sharpImage = sharp(imgAsset.source);
 
@@ -54,5 +55,15 @@ hexo.extend.tag.register('post_img', function (args) {
 
     return fs.mkdirs(destDir)
         .then(() => sharpImage.toFile(destFile))
-        .then((info, err) => generateMarkup(config, destPath, imgAsset.path));
+        .then(() => {
+            const logPath = path.relative(hexo.public_dir, destFile);
+            hexo.log.debug('Generated: %s', chalk.magenta(logPath));
+            return generateMarkup(config, destPath, imgAsset.path)
+        })
+        .then(() => {
+            hexo.log.info('Generated images for: %s', chalk.magenta(imgAsset.path.replace(/^\//, '')));
+        })
+        .catch((err) => {
+            console.log(`Failed to generate images: ${err}`);
+        });
 }, {async: true});
