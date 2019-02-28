@@ -1,6 +1,6 @@
 {
   "name": "@string-bean/hexo-image-toolkit",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Hexo plugin for managing images",
   "main": "index.js",
   "scripts": {
