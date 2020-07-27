@@ -1,12 +1,13 @@
 {
   "name": "@string-bean/hexo-image-toolkit",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Hexo plugin for managing images",
-  "main": "index.js",
+  "main": "index",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint index.js lib/*.js",
-    "lint:fix": "eslint --fix index.js lib/*.js"
+    "lint:fix": "eslint --fix index.js lib/*.js",
+    "prettier": "prettier '**/*.js' --write"
   },
   "repository": {
     "type": "git",
@@ -24,19 +25,19 @@
   },
   "homepage": "https://github.com/stringbean/hexo-image-toolkit#readme",
   "dependencies": {
-    "chalk": "^2.4.2",
-    "hexo-fs": "^1.0.2",
-    "sharp": "^0.21.3"
+    "chalk": "^4.1.0",
+    "hexo-fs": "^3.1.0",
+    "sharp": "^0.25.4"
   },
   "devDependencies": {
-    "eslint": "^5.14.1",
-    "eslint-config-prettier": "^4.0.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
     "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-node": "^8.0.1",
-    "eslint-plugin-prettier": "^3.0.1",
-    "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "prettier": "^1.16.4"
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "prettier": "^1.19.1"
   }
 }

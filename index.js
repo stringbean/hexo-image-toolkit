@@ -1,5 +1,11 @@
 /* global hexo */
 
-const renderTag = require('./lib/post_img');
+const postImg = require('./lib/post_img');
 
-hexo.extend.tag.register('post_img', renderTag(hexo), { async: true });
+hexo.extend.tag.register(
+  'post_img',
+  function(args) {
+    return postImg(hexo, args, this);
+  },
+  { async: true },
+);
