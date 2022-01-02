@@ -5,7 +5,6 @@
 
 const { process } = require('hexo-test-utils');
 const { contentFor } = require('hexo-test-utils');
-const { hasVendoredLibvips } = require('sharp/lib/libvips');
 const { hasRoute } = require('hexo-test-utils/routing');
 
 function checkRenderedImage(figure, basePath, caption, srcs, fallbackSrc) {
@@ -46,6 +45,7 @@ async function extractPost(ctx, path) {
   return container;
 }
 
+// eslint-disable-next-line no-unused-vars
 function verifyImageRoutes(ctx, basePath, images) {
   for (const image of images) {
     console.log(`${basePath}/${image}`);
