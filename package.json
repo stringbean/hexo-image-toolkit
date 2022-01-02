@@ -4,9 +4,9 @@
   "description": "Hexo plugin for managing images",
   "main": "index",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint index.js lib/*.js",
-    "lint:fix": "eslint --fix index.js lib/*.js",
+    "test": "jest",
+    "lint": "eslint index.js lib/*.js tests/*.js",
+    "lint:fix": "eslint --fix index.js lib/*.jss tests/*.js",
     "prettier": "prettier '**/*.js' --write"
   },
   "repository": {
@@ -32,6 +32,15 @@
   "devDependencies": {
     "eslint": "^8.5.0",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jest": "^25.3.3",
+    "hexo": "^6.0.0",
+    "hexo-renderer-ejs": "^2.0.0",
+    "hexo-renderer-markdown-it": "^5.0.0",
+    "hexo-test-utils": "^0.5.0",
+    "jest": "^27.4.5",
     "prettier": "^2.5.1"
+  },
+  "engines": {
+    "node": ">=12.13.0"
   }
 }
