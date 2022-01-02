@@ -48,9 +48,7 @@ async function extractPost(ctx, path) {
 // eslint-disable-next-line no-unused-vars
 function verifyImageRoutes(ctx, basePath, images) {
   for (const image of images) {
-    console.log(`${basePath}/${image}`);
     expect(hasRoute(ctx, `${basePath}/${image}`)).toBeTruthy();
-    // const foo = await contentFor(`${basePath}/${image}`);;
   }
 }
 
@@ -72,8 +70,8 @@ describe('post_img', () => {
       'gradient.jpg',
     );
 
-    // images
-    // verifyImageRoutes(context, 'post-1', ['gradient.jpg', 'gradient.webp']);
+    // check correct images in routes
+    verifyImageRoutes(context, 'post-1', ['gradient.jpg', 'gradient.webp']);
   });
 
   test('render png image', async () => {
@@ -93,7 +91,7 @@ describe('post_img', () => {
       'rect.png',
     );
 
-    // images
-    // verifyImageRoutes(context, 'post-1', ['rect.png', 'rect.webp']);
+    // check correct images in routes
+    verifyImageRoutes(context, 'post-2', ['rect.png', 'rect.webp']);
   });
 });
