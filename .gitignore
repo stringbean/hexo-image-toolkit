@@ -62,3 +62,6 @@ typings/
 
 # IntelliJ/WebStore
 .idea
+
+# test generated files
+tests/**/public/

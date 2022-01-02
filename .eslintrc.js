@@ -6,7 +6,8 @@ module.exports = {
   parserOptions: {
     ecmaVersion: '2018',
   },
-  extends: ['eslint:recommended', 'prettier'],
+  plugins: ['jest'],
+  extends: ['eslint:recommended', 'prettier', 'plugin:jest/recommended'],
   rules: {
     quotes: ['error', 'single'],
     'comma-dangle': ['error', 'always-multiline'],
