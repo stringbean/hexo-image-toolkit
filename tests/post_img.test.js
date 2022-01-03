@@ -97,4 +97,34 @@ describe('post_img', () => {
     // check correct images in routes
     verifyImageRoutes(context, 'post-2', ['rect.png', 'rect.webp']);
   });
+
+  test('skips assets for drafts if not rendered', async () => {
+    const context = await processFixture('drafts-off');
+
+    expect(hasRoute(context, 'draft-1/draft.jpg')).toBeFalsy();
+    expect(hasRoute(context, 'draft-1/draft.webp')).toBeFalsy();
+  });
+
+  test('processes assets for drafts if rendered', async () => {
+    const context = await processFixture('drafts-on');
+
+    const container = await extractPost(context, 'draft-1.html');
+
+    // extract rendered figures
+    const figures = container.getElementsByTagName('figure');
+    expect(figures).toHaveLength(1);
+    const figure = figures[0];
+
+    checkRenderedImage(
+      figure,
+      'draft-1',
+      'Draft Image',
+      'Draft Image',
+      [{ src: 'draft.webp', type: 'image/webp' }],
+      'draft.jpg',
+    );
+
+    // check correct images in routes
+    verifyImageRoutes(context, 'draft-1', ['draft.jpg', 'draft.webp']);
+  });
 });
