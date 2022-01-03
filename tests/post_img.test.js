@@ -7,7 +7,16 @@ const { process } = require('hexo-test-utils');
 const { contentFor } = require('hexo-test-utils');
 const { hasRoute } = require('hexo-test-utils/routing');
 
-function checkRenderedImage(figure, basePath, caption, alt, srcs, fallbackSrc) {
+function checkRenderedImage(
+  figure,
+  basePath,
+  caption,
+  alt,
+  srcs,
+  fallbackSrc,
+  width,
+  height,
+) {
   expect(figure.className).toBe('image');
   expect(figure.querySelector(':scope > figcaption').textContent).toBe(caption);
 
@@ -30,7 +39,8 @@ function checkRenderedImage(figure, basePath, caption, alt, srcs, fallbackSrc) {
 
   expect(img.getAttribute('src')).toBe(`${basePath}/${fallbackSrc}`);
   expect(img.getAttribute('alt')).toBe(alt);
-  // TODO alt text
+  expect(img.getAttribute('width')).toBe(width.toString());
+  expect(img.getAttribute('height')).toBe(height.toString());
 }
 
 async function processFixture(fixture = 'test1') {
@@ -70,6 +80,8 @@ describe('post_img', () => {
       'Test Image',
       [{ src: 'gradient.webp', type: 'image/webp' }],
       'gradient.jpg',
+      1024,
+      1024,
     );
 
     // check correct images in routes
@@ -92,6 +104,8 @@ describe('post_img', () => {
       'A rectangle with rounded corners',
       [{ src: 'rect.webp', type: 'image/webp' }],
       'rect.png',
+      1024,
+      768,
     );
 
     // check correct images in routes
@@ -122,6 +136,8 @@ describe('post_img', () => {
       'Draft Image',
       [{ src: 'draft.webp', type: 'image/webp' }],
       'draft.jpg',
+      1024,
+      1024,
     );
 
     // check correct images in routes
