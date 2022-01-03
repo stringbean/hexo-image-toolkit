@@ -7,7 +7,7 @@ const { process } = require('hexo-test-utils');
 const { contentFor } = require('hexo-test-utils');
 const { hasRoute } = require('hexo-test-utils/routing');
 
-function checkRenderedImage(figure, basePath, caption, srcs, fallbackSrc) {
+function checkRenderedImage(figure, basePath, caption, alt, srcs, fallbackSrc) {
   expect(figure.className).toBe('image');
   expect(figure.querySelector(':scope > figcaption').textContent).toBe(caption);
 
@@ -29,6 +29,7 @@ function checkRenderedImage(figure, basePath, caption, srcs, fallbackSrc) {
   const img = picture.querySelector(':scope > img');
 
   expect(img.getAttribute('src')).toBe(`${basePath}/${fallbackSrc}`);
+  expect(img.getAttribute('alt')).toBe(alt);
   // TODO alt text
 }
 
@@ -66,6 +67,7 @@ describe('post_img', () => {
       figure,
       'post-1',
       'Test Image',
+      'Test Image',
       [{ src: 'gradient.webp', type: 'image/webp' }],
       'gradient.jpg',
     );
@@ -87,6 +89,7 @@ describe('post_img', () => {
       figure,
       'post-2',
       'Rounded Rectangle',
+      'A rectangle with rounded corners',
       [{ src: 'rect.webp', type: 'image/webp' }],
       'rect.png',
     );
