@@ -1,0 +1,4 @@
+theme: default
+post_asset_folder: true
+permalink: :slug.html
+render_drafts: true
