@@ -30,14 +30,14 @@ function checkRenderedImage(
     const expected = srcs[i];
     const source = sources[i];
 
-    expect(source.getAttribute('srcset')).toBe(`${basePath}/${expected.src}`);
+    expect(source.getAttribute('srcset')).toBe(expected.src);
     expect(source.getAttribute('type')).toBe(expected.type);
   }
 
   // fallback image
   const img = picture.querySelector(':scope > img');
 
-  expect(img.getAttribute('src')).toBe(`${basePath}/${fallbackSrc}`);
+  expect(img.getAttribute('src')).toBe(fallbackSrc);
   expect(img.getAttribute('alt')).toBe(alt);
   expect(img.getAttribute('width')).toBe(width.toString());
   expect(img.getAttribute('height')).toBe(height.toString());
@@ -78,8 +78,8 @@ describe('post_img', () => {
       'post-1',
       'Test Image',
       'Test Image',
-      [{ src: 'gradient.webp', type: 'image/webp' }],
-      'gradient.jpg',
+      [{ src: 'post-1/gradient.webp', type: 'image/webp' }],
+      'post-1/gradient.jpg',
       1024,
       1024,
     );
@@ -102,14 +102,38 @@ describe('post_img', () => {
       'post-2',
       'Rounded Rectangle',
       'A rectangle with rounded corners',
-      [{ src: 'rect.webp', type: 'image/webp' }],
-      'rect.png',
+      [{ src: 'post-2/rect.webp', type: 'image/webp' }],
+      'post-2/rect.png',
       1024,
       768,
     );
 
     // check correct images in routes
     verifyImageRoutes(context, 'post-2', ['rect.png', 'rect.webp']);
+  });
+
+  test('render retina image', async () => {
+    const context = await processFixture();
+    const container = await extractPost(context, 'retina.html');
+
+    // extract rendered figures
+    const figures = container.getElementsByTagName('figure');
+    expect(figures).toHaveLength(1);
+    const figure = figures[0];
+
+    checkRenderedImage(
+      figure,
+      'retina',
+      'Retina Rounded Rectangle',
+      'A rectangle with rounded corners',
+      [{ src: 'retina/rect@2x.webp 2x, retina/rect.webp', type: 'image/webp' }],
+      'retina/rect.png',
+      512,
+      384,
+    );
+
+    // check correct images in routes
+    verifyImageRoutes(context, 'retina', ['rect.png', 'rect.webp']);
   });
 
   test('skips assets for drafts if not rendered', async () => {
@@ -134,8 +158,8 @@ describe('post_img', () => {
       'draft-1',
       'Draft Image',
       'Draft Image',
-      [{ src: 'draft.webp', type: 'image/webp' }],
-      'draft.jpg',
+      [{ src: 'draft-1/draft.webp', type: 'image/webp' }],
+      'draft-1/draft.jpg',
       1024,
       1024,
     );
