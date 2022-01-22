@@ -136,6 +136,48 @@ describe('post_img', () => {
     verifyImageRoutes(context, 'retina', ['rect.png', 'rect.webp']);
   });
 
+  test('render images with size', async () => {
+    const context = await processFixture();
+    const container = await extractPost(context, 'resized-1.html');
+
+    // extract rendered figures
+    const figures = container.getElementsByTagName('figure');
+    expect(figures).toHaveLength(3);
+
+    checkRenderedImage(
+      figures[0],
+      'resized-1',
+      'Width only',
+      'Width only',
+      [{ src: 'resized-1/width.webp', type: 'image/webp' }],
+      'resized-1/width.jpg',
+      400,
+      400,
+    );
+
+    checkRenderedImage(
+      figures[1],
+      'resized-1',
+      'Height only',
+      'Height only',
+      [{ src: 'resized-1/height.webp', type: 'image/webp' }],
+      'resized-1/height.jpg',
+      200,
+      200,
+    );
+
+    checkRenderedImage(
+      figures[2],
+      'resized-1',
+      'Width and height',
+      'Width and height',
+      [{ src: 'resized-1/width-and-height.webp', type: 'image/webp' }],
+      'resized-1/width-and-height.jpg',
+      300,
+      600,
+    );
+  });
+
   test('skips assets for drafts if not rendered', async () => {
     const context = await processFixture('drafts-off');
 
