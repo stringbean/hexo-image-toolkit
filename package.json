@@ -1,13 +1,15 @@
 {
   "name": "@string-bean/hexo-image-toolkit",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Hexo plugin for managing images",
   "main": "index",
   "scripts": {
+    "ci": "concurrently npm:lint npm:prettier:check npm:test",
     "test": "jest",
     "lint": "eslint index.js lib/*.js tests/*.js",
     "lint:fix": "eslint --fix index.js lib/*.jss tests/*.js",
-    "prettier": "prettier '**/*.js' --write"
+    "prettier": "prettier --write .",
+    "prettier:check": "prettier -c ."
   },
   "repository": {
     "type": "git",
@@ -26,23 +28,24 @@
   "homepage": "https://github.com/stringbean/hexo-image-toolkit#readme",
   "dependencies": {
     "chalk": "^4.1.0",
-    "hexo-fs": "^3.1.0",
-    "sharp": "^0.29.3"
+    "concurrently": "^8.0.1",
+    "hexo-fs": "^4.1.1",
+    "sharp": "^0.32.0"
   },
   "devDependencies": {
     "@types/hexo": "^3.8.7",
-    "@types/sharp": "^0.29.5",
     "eslint": "^8.5.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-jest": "^25.3.3",
+    "eslint-plugin-jest": "^27.2.1",
     "hexo": "^6.0.0",
     "hexo-renderer-ejs": "^2.0.0",
-    "hexo-renderer-markdown-it": "^5.0.0",
-    "hexo-test-utils": "^0.5.0",
-    "jest": "^27.4.5",
+    "hexo-renderer-markdown-it": "^7.0.0",
+    "hexo-test-utils": "^0.6.0",
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0",
     "prettier": "^2.5.1"
   },
   "engines": {
-    "node": ">=12.13.0"
+    "node": ">=14.0.0"
   }
 }
