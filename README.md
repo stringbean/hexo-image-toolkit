@@ -1,7 +1,7 @@
 # Hexo Image Toolkit
 
 ![npm (scoped)](https://img.shields.io/npm/v/@string-bean/hexo-image-toolkit)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/stringbean/hexo-image-toolkit/CI)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/stringbean/hexo-image-toolkit/ci.yml?branch=main)
 ![NPM](https://img.shields.io/npm/l/@string-bean/hexo-image-toolkit)
 
 Hexo tag plugin for converting & resizing images and generating associated markup.
