@@ -31,16 +31,23 @@ Given the following Markdown with `example.jpg` having a size of 2048x1536 pixel
 The following HTML will be generated:
 
 ```html
-
 <figure class="image">
-    <picture>
-        <source srcset="/post-path/example@2x.webp 2x, /post-path/example.webp" type="image/webp"/>
-        <img src="/post-path/example.jpg" alt="An example image" width="1024" height="768"/>
-    </picture>
+  <picture>
+    <source
+      srcset="/post-path/example@2x.webp 2x, /post-path/example.webp"
+      type="image/webp"
+    />
+    <img
+      src="/post-path/example.jpg"
+      alt="An example image"
+      width="1024"
+      height="768"
+    />
+  </picture>
 
-    <figcaption>
-        <span>An example image</span>
-    </figcaption>
+  <figcaption>
+    <span>An example image</span>
+  </figcaption>
 </figure>
 ```
 
@@ -53,7 +60,7 @@ Along with the following image assets:
 ## Options
 
 | Name     | Default       | Description                                                                         |
-|----------|---------------|-------------------------------------------------------------------------------------|
+| -------- | ------------- | ----------------------------------------------------------------------------------- |
 | `title`  | _required_    | Title to use in the figure caption.                                                 |
 | `alt`    | _title value_ | Text to use for the `alt` tag. If not supplied then the `title` value will be used. |
 | `retina` | `false`       | If `true` then the                                                                  |
@@ -68,7 +75,7 @@ this size will be used for the 2x image and fallback images generated at a quart
 For example, given an input image with a size of 2000x1000 pixels:
 
 | `retina` | `width` | `height` | 2x webp Size | Standard webp Size | Fallback Size | `img` Tag Size |
-|----------|---------|----------|--------------|--------------------|---------------|----------------|
+| -------- | ------- | -------- | ------------ | ------------------ | ------------- | -------------- |
 | `false`  | unset   | unset    | _none_       | 2000x1000          | 2000x1000     | 2000x1000      |
 | `false`  | `400`   | unset    | _none_       | 400x200            | 400x200       | 400x200        |
 | `false`  | unset   | `2000`   | _none_       | 4000x2000          | 4000x2000     | 4000x2000      |

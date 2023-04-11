@@ -8,8 +8,8 @@
     "test": "jest",
     "lint": "eslint index.js lib/*.js tests/*.js",
     "lint:fix": "eslint --fix index.js lib/*.jss tests/*.js",
-    "prettier": "prettier '**/*.js' --write",
-    "prettier:check": "prettier -c '**/*.js'"
+    "prettier": "prettier --write .",
+    "prettier:check": "prettier -c ."
   },
   "repository": {
     "type": "git",
