@@ -4,10 +4,12 @@
   "description": "Hexo plugin for managing images",
   "main": "index",
   "scripts": {
+    "ci": "concurrently npm:lint npm:prettier:check npm:test",
     "test": "jest",
     "lint": "eslint index.js lib/*.js tests/*.js",
     "lint:fix": "eslint --fix index.js lib/*.jss tests/*.js",
-    "prettier": "prettier '**/*.js' --write"
+    "prettier": "prettier '**/*.js' --write",
+    "prettier:check": "prettier -c '**/*.js'"
   },
   "repository": {
     "type": "git",
@@ -26,6 +28,7 @@
   "homepage": "https://github.com/stringbean/hexo-image-toolkit#readme",
   "dependencies": {
     "chalk": "^4.1.0",
+    "concurrently": "^8.0.1",
     "hexo-fs": "^4.1.1",
     "sharp": "^0.32.0"
   },
