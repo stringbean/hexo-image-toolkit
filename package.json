@@ -30,7 +30,7 @@
     "chalk": "^4.1.0",
     "concurrently": "^8.0.1",
     "hexo-fs": "^4.1.1",
-    "sharp": "^0.32.0"
+    "sharp": "^0.33.1"
   },
   "devDependencies": {
     "@types/hexo": "^3.8.7",
